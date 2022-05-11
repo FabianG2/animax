@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var listadoProductos = JSON.parse(localStorage.getItem("arrayProductos"));
     var divProductos = document.getElementById("productos");
     listadoProductos.forEach(element => {
-        divProductos.innerHTML = divProductos.innerHTML + '<div class="card"><div class="card-body"><h5 class="card-title">' + element["nombre_producto"] + '</h5></div></div>';
+        divProductos.innerHTML = divProductos.innerHTML + '<div class="card"><div class="card-body"><h5 class="card-title"> Evento escogido: ' + element["opciones"] +'</h5 > <div  class = "card-text"><p> Duracion : '+ element["duracion"] +'<br> Costo : '+element["costo"]+'<br> Correo de Contacto : '+element["correo"]+' </p>  </div></div></div>';
     });
     return false;
 });
@@ -23,7 +23,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 // Esta función se llama cuando se hace clic en el botón de Registrar
 // de la página de productos
 function registrarProducto() {
-    var nombre = document.getElementById("nombre_producto");
+    var nombre = document.getElementById("opciones");
+    var duracion= document.getElementById("duracion");
+    var costo = document.getElementById("costo");
+    var correo=document.getElementById("correo");
 
     //Creando/Consultado el array con datos 
     // a partir de lo que exista en localStorage
@@ -36,7 +39,8 @@ function registrarProducto() {
     }
 
     // Agregando un nuevo producto al array
-    array.push({ "nombre_producto": nombre.value });
+    array.push({ "opciones": nombre.value ,"duracion":duracion.value,"costo":costo.value,"correo":correo.value});
+
 
     // Guardando en el localStorage el nuevo array
     localStorage.setItem("arrayProductos", JSON.stringify(array));
@@ -51,7 +55,7 @@ function registrarProducto() {
     // Recorriendo el array de productos que viene del localStorage
     listadoProductos.forEach(element => {
         // Se añade cada producto al div como un card
-        divProductos.innerHTML = divProductos.innerHTML + '<div class="card"><div class="card-body"><h5 class="card-title">' + element["nombre_producto"] + ' </h5></div></div>';
+        divProductos.innerHTML = divProductos.innerHTML + '<div class="card"><div class="card-body"><h5 class="card-title"> Evento escogido :' + element["opciones"] + ' </h5> <div  class = "card-text"><p> Duracion : '+ element["duracion"] +'<br> Costo : '+element["costo"]+'<br> Correo de Contacto : '+element["correo"]+' </p> </div></div>';
     });
     document.getElementById("info1productos").style = "display:block;";
     return false;

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var listadoSaludos = JSON.parse(localStorage.getItem("arraySaludos"));
     var divSaludos = document.getElementById("saludos");
     listadoSaludos.forEach(element => {
-        divSaludos.innerHTML = divSaludos.innerHTML + '<div class="card"><div class="card-body"><h5 class="card-title">' + element["nombre"] + ' dice: </h5><p>' + element["saludo"] + '</p></div></div>';
+        divSaludos.innerHTML = divSaludos.innerHTML + '<div class="card"><div class="card-body"><h5 class="card-title"> Nombre : <br>' + element["nombre"] + ' </h5><p> Opinion : <br>' + element["saludo"] + '</p></div></div>';
     });
     return false;
 });
@@ -52,7 +52,7 @@ function registrarSaludo() {
     // Recorriendo el array de saludos que viene del localStorage
     listadoSaludos.forEach(element => {
         // Se añade cada saludo al div como un card
-        divSaludos.innerHTML = divSaludos.innerHTML + '<div class="card"><div class="card-body"><h5 class="card-title">' + element["nombre"] + ' dice: </h5><p>' + element["saludo"] + '</p></div></div>';
+        divSaludos.innerHTML = divSaludos.innerHTML + '<div class="card"><div class="card-body"><h5 class="card-title"> Nombre : <br>' + element["nombre"] + ' </h5><p> Opinion : <br>' + element["saludo"] + '</p></div></div>';
     });
     return false;
 }
